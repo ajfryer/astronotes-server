@@ -115,7 +115,6 @@ describe('folders endpoint', () => {
 
     it('DELETE /api/folders/:folder_id responds with 204 and deletes specific folder', () => {
       const id = testFolders[0].id;
-      console.log('this is the delete endpoint', `/api/folders/${id}`);
       return supertest(app)
         .delete('/api/folders/' + id)
         .expect(204)
