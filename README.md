@@ -1,26 +1,33 @@
-# Express Boilerplate!
+# astronotes-server
 
-This is a boilerplate project used for starting new projects!
+backend for astronotes - notetaking for spaceheads. Serves [astronotes-client](https://github.com/ajfryer/astronotes-client).
 
-## Set up
+## Setup
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+1. Configure postgres server, set timezone to UTC
+2. Create `astronotes` and optional `astronotes_test` databases in Postgres
+3. Create `.env` with DATABASE_URL and TEST_DATABASE_URL
+4. `yarn`
+5. Migrate database with `yarn migrate 2`
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+## Seed data
+
+Optionally insert dummy seed data
+
+`psql -d astronotes -f seeds/seed.dummy-data.sql`
+
+Remove seed data
+
+`psql -d astronotes -f seeds/trunc.dummy-data.sql`
 
 ## Scripts
 
-Start the application `npm start`
+Start server: `yarn start`
 
-Start nodemon for the application `npm run dev`
+Start server with auto-restart on file change: `yarn dev`
 
-Run the tests `npm test`
+Run tests: `yarn test`
 
-## Deploying
+Deploy: `yarn deploy`
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+Migrate DB: `yarn migrate [0-2]`

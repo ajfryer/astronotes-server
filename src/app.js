@@ -6,15 +6,12 @@
 const { NODE_ENV } = require('./config'); // env configs
 const express = require('express'); // HTTP server
 const morgan = require('morgan'); // HTTP logging
-const cors = require('cors');
 const helmet = require('helmet'); // secure HTTP headers
 const logger = require('./logger'); // application logging
 
 const foldersRouter = require('./folders/folders-router');
-const foldersService = require('./folders/folders-service'); // business logic folders service
 
 const notesRouter = require('./notes/notes-router');
-const notesService = require('./notes/notes-service');
 
 // express app
 const app = express();
