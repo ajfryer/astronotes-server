@@ -36,7 +36,7 @@ describe('notes endpoint', () => {
   const postgrator = new Postgrator({
     migrationDirectory: 'migrations',
     driver: 'pg',
-    connectionString: process.env.TEST_DB_URL
+    connectionString: process.env.TEST_DATABASE_URL
   });
 
   // before all tests: initialize test db
@@ -45,7 +45,7 @@ describe('notes endpoint', () => {
 
     db = knex({
       client: 'pg',
-      connection: process.env.TEST_DB_URL
+      connection: process.env.TEST_DATABASE_URL
     });
 
     app.set('db', db);
