@@ -29,7 +29,6 @@ notesRouter
       .addNote(req.app.get('db'), note)
       .then(([id]) => {
         logger.info('Added note id', id);
-        console.log('this is the new note id', id);
         return res
           .status(201)
           .location(path.posix.join(req.originalUrl, `/${id}`))
@@ -50,10 +49,6 @@ notesRouter
       .catch(next);
   })
   .delete((req, res, next) => {
-    console.log(
-      'this is the req.params.note_id and res.note.id',
-      req.params.note_id
-    );
     notesService
       .deleteNote(req.app.get('db'), req.params.note_id)
       .then(() => {

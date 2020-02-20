@@ -28,7 +28,6 @@ foldersRouter
       .addFolder(req.app.get('db'), name)
       .then(id => {
         logger.info('Added folder', { name, id });
-        console.log('this is the new folder id', id[0]);
         return res
           .status(201)
           .location(path.posix.join(req.originalUrl, `/${id}`))
@@ -49,10 +48,6 @@ foldersRouter
       .catch(next);
   })
   .delete((req, res, next) => {
-    console.log(
-      'this is the req.params.folder_id and res.folder.id',
-      req.params.folder_id
-    );
     foldersService
       .deleteFolder(req.app.get('db'), req.params.folder_id)
       .then(() => {

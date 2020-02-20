@@ -142,7 +142,6 @@ describe('notes endpoint', () => {
 
     it('DELETE /api/notes/:note_id responds with 204 and deletes specified note', () => {
       const id = testNotes[0].id;
-      console.log('this is the delete endpoint', `/api/notes/${id}`);
       return supertest(app)
         .delete('/api/notes/' + id)
         .expect(204)
@@ -159,13 +158,11 @@ describe('notes endpoint', () => {
 
     it('PATCH /api/notes/note_id responds with 204 and updates the specified note', () => {
       const { id, name, content } = testNotes[0];
-      console.log('id, name, and content of note to update', id, name, content);
       const newNote = {
         name: name + ' new',
         content: content + ' new',
         folder_id: 1
       };
-      console.log('this is the newNote', newNote);
       return supertest(app)
         .patch('/api/notes/' + id)
         .send(newNote)
@@ -178,10 +175,6 @@ describe('notes endpoint', () => {
             .first();
         })
         .then(note => {
-          console.log(
-            'this is the updated note returned by the database',
-            note
-          );
           expect(note.name).to.equal(newNote.name);
           expect(note.content).to.equal(newNote.content);
           expect(note.folder_id).to.equal(newNote.folder_id);
