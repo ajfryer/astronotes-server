@@ -32,30 +32,6 @@ app.use(express.static('public'));
 app.use('/api/folders', foldersRouter);
 app.use('/api/notes', notesRouter);
 
-/*app.get('/api/folders', (req, res, next) => {
-  const knexInstance = req.app.get('db');
-  foldersService
-    .getAllFolders(knexInstance)
-    .then(folders => {
-      res.json(folders);
-    })
-    .catch(next);
-});*/
-
-/*app.get('/api/folders/:folder_id', (req, res, next) => {
-  const knexInstance = req.app.get('db');
-  foldersService
-    .getById(knexInstance, req.params.folder_id)
-    .then(folder => {
-      res.json(folder);
-    })
-    .catch(next);
-});*/
-
-// api endpoints
-//app.use('/api/folders', foldersRouter);
-//app.use('/api/notes', notesRouter);
-
 // default error-handling middleware function
 app.use(function errorHandler(error, req, res, next) {
   logger.error(error);
